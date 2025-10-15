@@ -1,0 +1,22 @@
+{
+  "api_version": "1.0",
+  "endpoints": {
+    "apply_config": {
+      "url": "/.netlify/functions/apply-config",
+      "method": "POST",
+      "description": "Aplica configurações do auxilio"
+    }
+  },
+  "config": {
+    "package": "com.dts.freefireth",
+    "version": "1.94.8",
+    "supported_features": ["aimbot", "norecoil", "melhorar_mira", "calibracao", "sensibilidade"]
+  },
+  "api_keys": {
+    "production": "SUA_API_KEY_AQUI",
+    "development": "DEV_API_KEY_AQUI"
+  },
+  "endpoints_externos": {
+    "sua_api_principal": "https://sua-api.com/endpoint"
+  }
+}
