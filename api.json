@@ -13,11 +13,11 @@
     "supported_features": ["aimbot", "norecoil", "melhorar_mira", "calibracao", "sensibilidade"]
   },
   "api_keys": {
-    "production": "SUA_API_KEY_AQUI",
-    "development": "DEV_API_KEY_AQUI"
+    "production": "auxilio-optimizer-prod-829d1b3a",
+    "development": "auxilio-optimizer-dev-22c7f93b"
   },
   "endpoints_externos": {
-    "sua_api_principal": "https://sua-api.com/endpoint"
+    "sua_api_principal": "http://localhost:3000"
   }
 }
 
