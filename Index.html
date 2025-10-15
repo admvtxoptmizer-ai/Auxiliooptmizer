@@ -54,7 +54,7 @@
                 setStatus('Aplicando configurações...');
                 
                 try {
-                    const response = await fetch('/.netlify/functions/apply-config', {
+                    const response = await fetch('http://localhost:3000/.netlify/functions/apply-config', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
@@ -65,14 +65,19 @@
                         })
                     });
                     
-                    if (response.ok) {
-                        setStatus('✓ Configurações aplicadas com sucesso!');
+                    const data = await response.json();
+                    
+                    if (response.ok && data.success) {
+                        setStatus('✓ Configurações injetadas com sucesso!');
+                        console.log('✅ Resposta da API:', data);
                         setTimeout(() => setStatus(''), 3000);
                     } else {
-                        setStatus('✗ Erro ao aplicar configurações');
+                        setStatus('✗ Erro ao injetar configurações');
+                        console.error('❌ Erro:', data);
                     }
                 } catch (error) {
-                    setStatus('✗ Erro de conexão');
+                    setStatus('✗ Erro de conexão com API');
+                    console.error('❌ Erro na requisição:', error);
                 } finally {
                     setLoading(false);
                 }
@@ -377,4 +382,4 @@
         root.render(<AuxilioOptimizer />);
     </script>
 </body>
-</html>
+    </html>
