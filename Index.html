@@ -54,7 +54,7 @@
                 setStatus('Aplicando configurações...');
                 
                 try {
-                    const response = await fetch('http://localhost:3000/.netlify/functions/apply-config', {
+                    const response = await fetch('http://localhost:3000/api/apply-config', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
@@ -65,19 +65,17 @@
                         })
                     });
                     
-                    const data = await response.json();
-                    
-                    if (response.ok && data.success) {
-                        setStatus('✓ Configurações injetadas com sucesso!');
-                        console.log('✅ Resposta da API:', data);
+                    if (response.ok) {
+                        const data = await response.json();
+                        setStatus('✓ Configurações aplicadas com sucesso!');
+                        console.log('Resposta da API:', data);
                         setTimeout(() => setStatus(''), 3000);
                     } else {
-                        setStatus('✗ Erro ao injetar configurações');
-                        console.error('❌ Erro:', data);
+                        setStatus('✗ Erro ao aplicar configurações');
                     }
                 } catch (error) {
-                    setStatus('✗ Erro de conexão com API');
-                    console.error('❌ Erro na requisição:', error);
+                    console.error('Erro:', error);
+                    setStatus('✗ Erro de conexão com a API');
                 } finally {
                     setLoading(false);
                 }
